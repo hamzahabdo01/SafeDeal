@@ -15,16 +15,13 @@ import {
   AlertCircle,
   Info,
   Mail,
-  Phone,
   Calendar,
-  Clock,
 } from 'lucide-react';
 import { useEscrows } from '../../hooks/useEscrows';
 import { APP_CONFIG } from '../../utils/constants';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
-import Card, { CardHeader, CardTitle, CardContent } from '../../components/ui/Card';
-import Badge from '../../components/ui/Badge';
+import Card, { CardContent } from '../../components/ui/Card';
 import type { CreateEscrowRequest } from '../../types';
 
 const createEscrowSchema = z.object({
@@ -51,7 +48,7 @@ type CreateEscrowFormData = z.infer<typeof createEscrowSchema>;
 
 const CreateEscrow: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [milestones, setMilestones] = useState<Array<{ title: string; amount: number; description: string }>>([]);
+
   const { createEscrow, isCreating } = useEscrows();
   const navigate = useNavigate();
 
@@ -60,7 +57,6 @@ const CreateEscrow: React.FC = () => {
     handleSubmit,
     formState: { errors },
     watch,
-    setValue,
     trigger,
   } = useForm<CreateEscrowFormData>({
     resolver: zodResolver(createEscrowSchema),
@@ -112,13 +108,7 @@ const CreateEscrow: React.FC = () => {
     'Other',
   ];
 
-  const addMilestone = () => {
-    setMilestones([...milestones, { title: '', amount: 0, description: '' }]);
-  };
 
-  const removeMilestone = (index: number) => {
-    setMilestones(milestones.filter((_, i) => i !== index));
-  };
 
   const nextStep = async () => {
     const fieldsToValidate = getFieldsForStep(currentStep);

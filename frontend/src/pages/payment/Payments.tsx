@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   CreditCard,
-  DollarSign,
   TrendingUp,
   TrendingDown,
   Clock,
@@ -11,14 +10,12 @@ import {
   XCircle,
   AlertCircle,
   Search,
-  Filter,
   Download,
   ExternalLink,
-  Calendar,
   ArrowUpRight,
   RefreshCw,
 } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
+
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import Card, { CardHeader, CardTitle, CardContent } from '../../components/ui/Card';
@@ -76,9 +73,7 @@ const Payments: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<TransactionStatus | 'all'>('all');
   const [dateRange, setDateRange] = useState<'7d' | '30d' | '90d' | 'all'>('30d');
-  const [isLoading, setIsLoading] = useState(false);
-  
-  const { user } = useAuth();
+  const [isLoading] = useState(false);
 
   // Filter payments based on search and filters
   const filteredPayments = useMemo(() => {
