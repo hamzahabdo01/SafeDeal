@@ -5,10 +5,8 @@ import {
   Shield, 
   CheckCircle, 
   Lock, 
-  Users, 
   ArrowRight, 
   Star,
-  TrendingUp,
   Zap,
   Globe,
   Award,
@@ -98,7 +96,6 @@ const Home: React.FC = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
       },
     },
   };
@@ -109,7 +106,6 @@ const Home: React.FC = () => {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: 'easeInOut',
       },
     },
   };
@@ -457,30 +453,28 @@ const Home: React.FC = () => {
           {/* Background Animation */}
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary-600/90 to-blue-600/90"></div>
-            <motion.div
-              animate={{
-                scale: [1, 1.1, 1],
-                rotate: [0, 5, 0],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full"
-            ></motion.div>
-            <motion.div
-              animate={{
-                scale: [1.1, 1, 1.1],
-                rotate: [5, 0, 5],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full"
-            ></motion.div>
+                         <motion.div
+               animate={{
+                 scale: [1, 1.1, 1],
+                 rotate: [0, 5, 0],
+               }}
+               transition={{
+                 duration: 8,
+                 repeat: Infinity,
+               }}
+               className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full"
+             ></motion.div>
+             <motion.div
+               animate={{
+                 scale: [1.1, 1, 1.1],
+                 rotate: [5, 0, 5],
+               }}
+               transition={{
+                 duration: 10,
+                 repeat: Infinity,
+               }}
+               className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/10 rounded-full"
+             ></motion.div>
           </div>
 
           <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">

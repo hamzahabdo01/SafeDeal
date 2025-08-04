@@ -4,16 +4,11 @@ import { motion } from 'framer-motion';
 import {
   Plus,
   Search,
-  Filter,
   Shield,
-  DollarSign,
-  Calendar,
-  User,
   Clock,
   CheckCircle,
   AlertCircle,
   Eye,
-  MoreHorizontal,
   TrendingUp,
   ArrowUpRight,
 } from 'lucide-react';
@@ -21,16 +16,15 @@ import { useEscrows } from '../../hooks/useEscrows';
 import { useAuth } from '../../contexts/AuthContext';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
-import Card, { CardHeader, CardTitle, CardContent } from '../../components/ui/Card';
+import Card, { CardContent } from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
 import Loading from '../../components/ui/Loading';
-import type { Escrow, EscrowStatus } from '../../types';
+import type { EscrowStatus } from '../../types';
 
 const Escrows: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<EscrowStatus | 'all'>('all');
   const [sortBy, setSortBy] = useState<'date' | 'amount' | 'status'>('date');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   
   const { escrows, isLoadingEscrows, escrowsError } = useEscrows();
   const { user } = useAuth();
